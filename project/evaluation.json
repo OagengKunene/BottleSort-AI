@@ -1,0 +1,66 @@
+{
+  "model": "Multiclass logistic regression on 32 \u00d7 48 grayscale pixels",
+  "classes": [
+    "cap_ok",
+    "missing_cap",
+    "tilted_cap"
+  ],
+  "seed": 17,
+  "training_samples": 1080,
+  "test_samples": 420,
+  "test_accuracy": 0.9976190476190476,
+  "confusion_matrix": [
+    [
+      139,
+      0,
+      1
+    ],
+    [
+      0,
+      140,
+      0
+    ],
+    [
+      0,
+      0,
+      140
+    ]
+  ],
+  "classification_report": {
+    "cap_ok": {
+      "precision": 1.0,
+      "recall": 0.9928571428571429,
+      "f1-score": 0.996415770609319,
+      "support": 140.0
+    },
+    "missing_cap": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 140.0
+    },
+    "tilted_cap": {
+      "precision": 0.9929078014184397,
+      "recall": 1.0,
+      "f1-score": 0.99644128113879,
+      "support": 140.0
+    },
+    "accuracy": 0.9976190476190476,
+    "macro avg": {
+      "precision": 0.9976359338061466,
+      "recall": 0.9976190476190476,
+      "f1-score": 0.9976190172493696,
+      "support": 420.0
+    },
+    "weighted avg": {
+      "precision": 0.9976359338061465,
+      "recall": 0.9976190476190476,
+      "f1-score": 0.9976190172493696,
+      "support": 420.0
+    }
+  },
+  "mean_confidence": 0.9653877264532379,
+  "evaluation_scope": "Independent synthetic test images; not evidence of performance on real bottle photographs.",
+  "train_seeds": "104729\u2013105088; 204729\u2013205088; 304729\u2013305088",
+  "test_seeds": "900001\u2013900140; 1000001\u20131000140; 1100001\u20131100140"
+}
