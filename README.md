@@ -62,3 +62,45 @@ The tests compare the Python and JavaScript image generators and probabilities, 
 Synthetic condition → camera pixels → learned classifier → confidence rule → per-bottle route → virtual diverter → inspection log.
 
 The synthetic condition is used only to generate images and evaluate predictions. The classifier receives the pixel array, not the ground-truth class. Sorting decisions are latched to individual bottle IDs at inspection.
+
+## Publish on Hugging Face
+
+The deployment targets **Oageng/BottleSort-AI** as a **Static** Space. The existing HTML interface, learned model, simulation, and downloads run entirely in the browser.
+
+### One-time Space setup
+
+Create a public Space under **Oageng** with:
+
+| Field | Value |
+| --- | --- |
+| Space name | `BottleSort-AI` |
+| Short description | AI bottle inspection and automated conveyor sorting simulation |
+| SDK | Static |
+| Template | Blank |
+
+In that Space's **Settings → Trusted Publishers**, add:
+
+| Field | Value |
+| --- | --- |
+| Provider | GitHub Actions |
+| Repository | `OagengKunene/BottleSort-AI` |
+| Branch | `main` |
+| Workflow | `deploy-huggingface.yml` |
+| Read-only | Unchecked |
+
+The publisher gives this workflow temporary write access to this Space only. No Hugging Face account password or long-lived token needs to be stored in GitHub.
+
+### Deploy and update
+
+Push application changes in `dist/` to `main`, or open GitHub **Actions → Deploy BottleSort-AI to Hugging Face → Run workflow**. If the first run happened before the one-time Space setup, rerun its failed job after setup.
+
+The workflow first runs `npm test` against the model, Python-generated fixtures, all 420 held-out images, and routing rules. It then prepares a separate upload directory and publishes the contents of `dist/` plus the Hugging Face Space card. Relative paths to the model, scripts, styles, notebook, report, and project ZIP are preserved.
+
+To inspect the package locally, choose a separate empty directory outside this repository:
+
+```bash
+python project/prepare_huggingface.py --output /tmp/bottlesort-ai-space
+python -m http.server 8000 --directory /tmp/bottlesort-ai-space
+```
+
+See [Hugging Face's Trusted Publishers documentation](https://huggingface.co/docs/hub/en/trusted-publishers) for the authentication mechanism.
