@@ -7,7 +7,7 @@ sdk: static
 app_file: index.html
 fullWidth: true
 pinned: false
-short_description: AI bottle inspection and automated conveyor sorting simulation
+short_description: AI bottle inspection and automated sorting simulation
 tags:
   - industrial-automation
   - machine-learning

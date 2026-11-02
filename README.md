@@ -74,7 +74,7 @@ Create a public Space under **Oageng** with:
 | Field | Value |
 | --- | --- |
 | Space name | `BottleSort-AI` |
-| Short description | AI bottle inspection and automated conveyor sorting simulation |
+| Short description | AI bottle inspection and automated sorting simulation |
 | SDK | Static |
 | Template | Blank |
 
